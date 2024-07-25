@@ -2,6 +2,11 @@
   <h1>
     Guess the number: <input type="number" [(ngModel)]="userInput" name="userInput">
     <button (click)="checkGuess()">Check</button>
+    <button (click)="exitTheGame()">Exit</button>
   </h1>
-  <div *ngIf="message">{{ message }}</div>
+   <h1>
+    <div *ngIf="checkColor" class="correct">{{ message }}</div>
+    <div *ngIf="!checkColor" class="wrong">{{ message }}</div>
+   </h1>
+  
 </div>

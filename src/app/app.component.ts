@@ -11,6 +11,7 @@ export class AppComponent {
   userInput: number | null = null;
   message: string | null = null;
   gameInProgress: boolean = true; // Flag to control game state
+  checkColor: boolean= false;
 
   constructor() {
     this.randomNum = this.generateRandomNumber();
@@ -20,6 +21,12 @@ export class AppComponent {
     return Math.floor(Math.random() * 100) + 1; // Generates a random number between 1 and 100
   }
 
+  exitTheGame() {
+    this.randomNum = this.generateRandomNumber();
+    this.userInput = null;
+    this.message = null;
+    this.gameInProgress = true;
+  }
   checkGuess() {
     if (!this.gameInProgress) {
       return; // If game is not in progress, do nothing
@@ -32,6 +39,7 @@ export class AppComponent {
 
     if (this.userInput === this.randomNum) {
       this.message = "Congratulations! You guessed the correct number.";
+      this.checkColor=true;
       this.gameInProgress = false; // End the game
     } else if (this.userInput < this.randomNum) {
       this.message = "User enter number is less than random number please enter greater number.";
